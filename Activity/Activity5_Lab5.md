@@ -1,0 +1,55 @@
+Activity Five for Lab1
+================
+Taehoon Ha
+10/10/2018
+
+### 1. Matrix and vector multiplication: write a function that will multiply a matrix and a vector (without built-in matrix multiplication function.) A%\*%B is not allowed.
+
+``` r
+A <- matrix(1:9, nrow = 3)
+b <- c(1, 2, 3)
+
+mat_vect_mult <- function(A, b) {
+    p <- dim(A)[1]
+    q <- dim(A)[2]
+    c <- matrix(0, nrow = p)
+    for(i in 1:p) {
+        for(j in 1:q) {
+            c[i] <- c[i] + A[i, j] * b[j]
+        }
+    }
+    return(c)
+}
+
+mat_vect_mult(A, b)
+```
+
+    ##      [,1]
+    ## [1,]   30
+    ## [2,]   36
+    ## [3,]   42
+
+We can check our result:
+
+``` r
+A%*%b
+```
+
+    ##      [,1]
+    ## [1,]   30
+    ## [2,]   36
+    ## [3,]   42
+
+### 2. Suppose you are betting that you get at least one six in 4 throws of a die. Write a function that simulates one round of the game and prints out whether you win or lose.
+
+``` r
+gambling <- function(){
+  bet <- replicate(4, sample(1:6, 1, replace = T))
+  result <- sum(bet == 4) >= 1
+  ifelse(result, "Win", "Lose")
+}
+
+gambling()
+```
+
+    ## [1] "Win"
