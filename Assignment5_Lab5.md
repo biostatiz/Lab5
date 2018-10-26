@@ -24,13 +24,13 @@ gambling <- function(N){
 gambling(N = 1000)
 ```
 
-    ## [1] 0.516
+    ## [1] 0.518
 
 ``` r
 gambling(N = 10000)
 ```
 
-    ## [1] 0.5175
+    ## [1] 0.5196
 
 ### Question 2.
 
@@ -40,16 +40,17 @@ Ex. vector is (1, 4, 2, 0, 5), then the smallest element - 0 and index is 4.
 
 ``` r
 find.min <- function(vec) {
-    min.element <- vec[1]
-    for (i in (seq_along(vec[-1]) + 1)) {
+    min.element <- Inf
+    for (i in (seq_along(vec))) {
         if(vec[i] < min.element)
             min.element <- vec[i]
     }
-    min.element
+    idx <- which(vec %in% min.element)
+    paste0("the smallest element - ", min.element, " and index is ", idx, ".")
 }
 
 vec <- c(1, 4, 2, 0, 5)
 find.min(vec)
 ```
 
-    ## [1] 0
+    ## [1] "the smallest element - 0 and index is 4."
